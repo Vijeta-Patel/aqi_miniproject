@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Live MQ135 Dashboard</title>
+<style>
+  body { font-family: Arial; padding: 20px; }
+  #connect { padding: 10px 15px; font-size: 16px; }
+  .val { font-size: 28px; font-weight: bold; }
+</style>
+</head>
+<body>
+<h2>Live Air Quality Dashboard</h2>
+<button id="connect">Connect</button>
+
+<p>MQ135: <span class="val" id="sensor">--</span></p>
+<p>Temp: <span class="val" id="temp">--</span></p>
+<p>Hum: <span class="val" id="hum">--</span></p>
+<p>Category: <span class="val" id="cat">--</span></p>
+
+<script>
+const bins = [0,200,400,800,1400,2600,4095];
+const labels = ["Good","Moderate","Unhealthy for Sensitive Groups","Unhealthy","Very Unhealthy","Hazardous"];
+
+document.getElementById("connect").addEventListener("click", async () => {
+  try {
+    const port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 115200 });
+
+    const decoder = new TextDecoderStream();
+    port.readable.pipeTo(decoder.writable);
+    const reader = decoder.readable.getReader();
+
+    let buffer = "";
+
+    document.getElementById("connect").textContent = "Connected";
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += value;
+      const lines = buffer.split("\n");
+      buffer = lines.pop();
+
+      for (let line of lines) {
+        line = line.trim();
+        if (!line.includes(",")) continue;
+
+        const p = line.split(",");
+        if (p.length < 4) continue;
+
+        let sensor = parseFloat(p[1]) || 0;
+        let temp = p[2] === "nan" ? 0 : parseFloat(p[2]);
+        let hum  = p[3] === "nan" ? 0 : parseFloat(p[3]);
+
+        let idx = bins.findIndex((b,i)=>sensor <= bins[i+1]);
+        if (idx === -1) idx = labels.length-1;
+
+        document.getElementById("sensor").textContent = sensor;
+        document.getElementById("temp").textContent   = temp;
+        document.getElementById("hum").textContent    = hum;
+        document.getElementById("cat").textContent    = labels[idx];
+      }
+    }
+  } catch (err) {
+    alert("Error: " + err);
+  }
+});
+</script>
+
+</body>
+</html>
