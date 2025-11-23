@@ -26,7 +26,7 @@ A real-time air quality monitoring system using ESP32, MQ135 gas sensor, DHT11 t
 
 ## Dataset Source
 
-- **Kaggle:** [ADL Classification Dataset](https://www.kaggle.com/datasets/saurabhshahane/adl-classification)
+- **Zenodo:** [Air Quality Dataset](https://zenodo.org/records/13283893)
 
 ---
 
@@ -92,7 +92,7 @@ python -m http.server 5500
 | `initial_model_6class.pkl`  | Initial trained ML model (pickle file)                                      |
 | `live_minimal.html`         | Minimal dashboard for local visualization                                   |
 | `requirements.txt`          | Python dependencies                                                         |
-| `README.txt`                | Project documentation                                                       |
+| `README.md`                | Project documentation                                                       |
 
 ---
 
