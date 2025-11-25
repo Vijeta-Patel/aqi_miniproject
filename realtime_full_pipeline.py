@@ -213,6 +213,8 @@ try:
         # cleaned output
         print(f"{AQI_LABELS[pred]} | sensor={sensor} temp={temp} hum={hum} ts={ts}")
 
+        
+
         # append to live file
         with open(LIVE_DATASET, "a") as f:
             f.write(f"{ts},{sensor},{temp},{hum},{pred}\n")
