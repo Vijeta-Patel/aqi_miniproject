@@ -4,12 +4,12 @@
 // WiFi – fill later when we add cloud
 #pragma once
 
-#define WIFI_SSID "GalaxyA21s"
-#define WIFI_PASS "12345678990"
+#define WIFI_SSID "CRIB_2.4"
+#define WIFI_PASS "Ind1234#"
 
 // Pins
 #define MQ135_PIN 34
-#define DHT_PIN   4 
+#define DHT_PIN   25 
 
 // Sampling interval (milliseconds)
 #define SAMPLING_INTERVAL 2000 // 10 seconds

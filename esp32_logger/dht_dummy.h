@@ -1,8 +1,18 @@
 #ifndef DHT_DUMMY_H
 #define DHT_DUMMY_H
 
+#include "DHT.h"
+#include "config.h"
+
+DHT dht(DHT_PIN, DHT11);
 // Temporary fake functions
-inline float readTempDummy()    { return 25.0; }   // fake temperature
-inline float readHumidDummy()   { return 50.0; }   // fake humidity
+
+void intitDHT(){
+    dht.begin();
+}
+float readTemp()    { return 25;//dht.readTemperature(); 
+    }   // fake temperature
+float readHumid()   { return 50;//dht.readHumidity(); 
+    }   // fake humidity
 
 #endif

@@ -26,8 +26,8 @@ SensorData readSensors() {
     d.mq135_raw = analogRead(MQ135_PIN);
 
     // For now, use dummy temp/humidity
-    d.temperature = readTempDummy();
-    d.humidity    = readHumidDummy();
+    d.temperature = readTemp();
+    d.humidity    = readHumid();
 
     return d;
 }
