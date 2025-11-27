@@ -10,9 +10,11 @@ DHT dht(DHT_PIN, DHT11);
 void intitDHT(){
     dht.begin();
 }
-float readTemp()    { return 25;//dht.readTemperature(); 
+float readTemp()    { 
+    return dht.readTemperature(); 
     }   // fake temperature
-float readHumid()   { return 50;//dht.readHumidity(); 
+float readHumid()   { 
+    return dht.readHumidity(); 
     }   // fake humidity
 
 #endif

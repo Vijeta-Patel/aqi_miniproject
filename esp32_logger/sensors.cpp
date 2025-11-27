@@ -5,6 +5,7 @@
 
 int baseline = 0;
 
+//DHT dht(DHT_PIN,DHT11);
 void initSensors() {
     pinMode(MQ135_PIN, INPUT);
 
@@ -18,6 +19,7 @@ void initSensors() {
     baseline = sum / samples;
     Serial.print("MQ135 baseline: ");
     Serial.println(baseline);
+    intitDHT();
 }
 
 SensorData readSensors() {

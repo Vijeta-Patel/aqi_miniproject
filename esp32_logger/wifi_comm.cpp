@@ -131,7 +131,7 @@ void handleRoot() {
 <body>
   <div class="container">
     <h1>Air Quality Dashboard</h1>
-    <p class="subtitle">ESP32 · MQ135 · Edge ML</p>
+    <p class="subtitle">ESP32 · MQ135 · IOT</p>
 
     <div id="statusBox" class="status-card status-good">Loading...</div>
 

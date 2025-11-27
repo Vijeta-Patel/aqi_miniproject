@@ -9,7 +9,7 @@
 
 // Pins
 #define MQ135_PIN 34
-#define DHT_PIN   25 
+#define DHT_PIN   14 
 
 // Sampling interval (milliseconds)
 #define SAMPLING_INTERVAL 2000 // 10 seconds
