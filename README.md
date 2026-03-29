@@ -9,8 +9,6 @@ A real-time air quality monitoring system using ESP32, MQ135 gas sensor, DHT11 t
 - Real-time air quality data acquisition via ESP32
 - AQI classification into 6 categories using ML
 - Continuous model retraining with live and historical data
-- Data logging and local dashboard visualization
-- Modular pipeline for easy extension
 
 ---
 
